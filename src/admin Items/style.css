@@ -1,0 +1,49 @@
+#main {
+  margin-top: 2%;
+  margin-left: 22%;
+  font-size: 16px;
+}
+
+#gra {
+  width: 220px;
+  height: 150px;
+  float: left;
+  font-size: 20px;
+  text-align: center;
+  border: dotted;
+  border-width: 1px;
+  margin: 8px;
+  margin-right: 25px;
+}
+
+#user {
+  width: 1100px;
+  height: 100px;
+  float: left;
+  font-size: 20px;
+  text-align: center;
+  border: dotted;
+  border-width: 1px;
+  margin: 8px;
+  margin-right: 25px;
+}
+td {
+  border: 1px dotted rgb(201, 190, 190);
+  height: 70px;
+  width: 190px;
+  text-align: center;
+}
+
+#first {
+  width: 60px;
+}
+#mainTable {
+  background-color: rgb(243, 243, 243);
+}
+
+#search {
+  margin-top: 30px;
+  margin-left: 8%;
+  width: 500px;
+  font-size: 16px;
+}
