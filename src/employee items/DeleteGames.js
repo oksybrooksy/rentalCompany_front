@@ -9,7 +9,7 @@ export default function DeleteGames({ name, category }) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:8080/getAllGames?category=${category}&page=0&name=${name}`
+      `http://localhost:8080/api/getAllGames?category=${category}&page=0&name=${name}`
     )
       .then((res) => res.json())
       .then((result) => {
@@ -22,7 +22,7 @@ export default function DeleteGames({ name, category }) {
   const handleClick = (e) => {
     setLoad(true);
     e.preventDefault();
-    fetch("http://localhost:8080/deleteGame", {
+    fetch("http://localhost:8080/api/deleteGame", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

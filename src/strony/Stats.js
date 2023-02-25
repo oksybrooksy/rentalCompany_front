@@ -3,12 +3,13 @@ import "./style.css";
 import { Paper } from "@material-ui/core";
 import { useEffect } from "react";
 import { useState } from "react";
+import MyNavbar from "../components/Navbar";
 
 export default function Stats() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/findBestGames`)
+    fetch(`http://localhost:8080/api/findBestGames`)
       .then((res) => res.json())
       .then((result) => {
         setGames(result);
@@ -17,6 +18,7 @@ export default function Stats() {
   var index = 1;
   return (
     <div id="stats">
+      <MyNavbar />
       <Paper
         elevation={8}
         style={{

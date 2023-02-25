@@ -1,8 +1,10 @@
 // import { Container } from "react-bootstrap";
 import { Container, Paper } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import MyNavbar from "./Navbar";
 
 export default function Games({ category, name }) {
   const [games, setGames] = useState([]);
@@ -14,9 +16,39 @@ export default function Games({ category, name }) {
     navigate(`/game/${game.id}`, { game: game });
   };
 
+  const { user, isLogged } = useContext(UserContext);
+  const [us, setUser] = user;
+  const [log, setLog] = isLogged;
+  const [userDet, setUserDet] = user;
+
+  const makeRent = (e) => {
+    e.preventDefault();
+    var graId2 = e.target.id;
+    var email2 = userDet.email;
+
+    fetch(`http://localhost:8080/newRent?email=${email2}&graId=${graId2}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      // mode= "no-cors",
+      body: JSON.stringify({}),
+    })
+      // .then((res) => res.json())
+      .then((result) => {
+        console.log("status:" + result.status);
+        console.log(result);
+        if (result.status == 200) {
+          alert(
+            "Gra zarezerwowana! Aby zobaczyć  swoje rezerwacje i wypożyczenia, wejdź w zakładkę 'Twoje gry'"
+          );
+        } else {
+          alert("Wykorzystales/as limit wypozyczanych gier!");
+        }
+      });
+  };
+
   useEffect(() => {
     fetch(
-      `http://localhost:8080/getAllGames?category=${category}&page=0&name=${name}`
+      `http://localhost:8080/api/getAllGames?category=${category}&page=0&name=${name}`
     )
       .then((res) => res.json())
       .then((result) => {
@@ -32,7 +64,6 @@ export default function Games({ category, name }) {
 
   return (
     <Container>
-      {/* ilosc znalezionych gier: {games.length} */}
       {mess && (
         <div id="mess">
           {" "}
@@ -72,15 +103,21 @@ export default function Games({ category, name }) {
           </h6>
           <h6> Czas gry: {game.time}min+</h6>
           <br />
-          <Button
-            id="button_rezerwacja"
-            variant="outline-secondary"
-            block
-            size="lg"
-            type="submit"
-          >
-            Zarezerwuj
-          </Button>
+
+          {log && (
+            <Button
+              // id="button_rezerwacja"
+              id={game.id}
+              variant="outline-secondary"
+              block
+              size="lg"
+              type="submit"
+              onClick={makeRent}
+            >
+              Zarezerwuj
+            </Button>
+          )}
+
           <Button
             id="button_rezerwacja"
             variant="outline-secondary"

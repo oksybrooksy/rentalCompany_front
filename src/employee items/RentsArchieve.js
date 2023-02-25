@@ -3,7 +3,7 @@ import EmployeeMenu from "./EmployeeMenu";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 
-export default function Rents() {
+export default function RentsArchieve() {
   const [rents, setRents] = useState([]);
   const [load, setLoad] = useState(false);
   const [games, setGames] = useState([]);
@@ -11,7 +11,7 @@ export default function Rents() {
   const [statuses, setStatus] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/getAllRents")
+    fetch("http://localhost:8080/getAllArchieveRents")
       .then((res) => res.json())
       .then((result) => {
         setRents(result);
@@ -21,7 +21,7 @@ export default function Rents() {
       .then((result) => {
         setUsers(result);
       });
-    fetch("http://localhost:8080/getOnlyGames")
+    fetch("http://localhost:8080/api/getOnlyGames")
       .then((res) => res.json())
       .then((result) => {
         setGames(result);
@@ -32,36 +32,6 @@ export default function Rents() {
         setStatus(result);
       });
   }, [load]);
-
-  const handleClick = (e) => {
-    setLoad(true);
-    e.preventDefault();
-    fetch("http://localhost:8080/acceptRent", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: e.target.id,
-      }),
-    }).then(() => {
-      console.log("rent accepted");
-      setLoad(false);
-    });
-  };
-
-  const handleClick2 = (e) => {
-    setLoad(true);
-    e.preventDefault();
-    fetch("http://localhost:8080/cancelRent", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: e.target.id,
-      }),
-    }).then(() => {
-      console.log("rent cancelled");
-      setLoad(false);
-    });
-  };
 
   const handleClick3 = (e) => {
     setLoad(true);
@@ -127,34 +97,6 @@ export default function Rents() {
               .map((val, key) => {
                 return <div> Status: {val.status} </div>;
               })}
-            <br />
-            <div id="idbutton">
-              <Button
-                id={rent.id}
-                key={rent.id}
-                variant="outline-secondary"
-                size="lg"
-                type="submit"
-                onClick={handleClick}
-              >
-                Zatwierdź
-              </Button>
-            </div>
-            <br />
-            <div id="idbutton2">
-              <Button
-                id={rent.id}
-                key={rent.id}
-                variant="outline-secondary"
-                block
-                size="lg"
-                type="submit"
-                onClick={handleClick2}
-              >
-                Anuluj
-              </Button>
-              <br />
-            </div>
             <br />
             <div id="idbutton2">
               <Button

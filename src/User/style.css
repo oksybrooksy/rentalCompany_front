@@ -1,0 +1,149 @@
+#categories {
+  margin-left: 3%;
+  margin-top: 2%;
+  width: 105%;
+  float: left;
+  height: 100%;
+}
+
+.ui.vertical.menu {
+  width: 100%;
+}
+
+#glowny_widok {
+  float: left;
+  margin-left: 2%;
+  border-style: solid;
+  border-color: rgb(232, 244, 245);
+  width: 70%;
+  height: 110%;
+  background-color: rgb(228, 236, 238);
+  margin-top: 2%;
+}
+
+#menuDiv {
+  float: left;
+}
+
+#wybor {
+  font-size: 16px;
+  height: 40px;
+  width: 210px;
+}
+
+#searching {
+  width: 1005px;
+  padding: 10px;
+  margin-left: 4%;
+  font-size: 18px;
+}
+
+#button_rezerwacja2 {
+  height: 50px;
+  margin-top: 2%;
+  width: 150px;
+  font-size: 18px;
+}
+
+#hello {
+  width: 49%;
+  height: 10%;
+  background: whitesmoke;
+  box-shadow: inset 0 0 5px #fff;
+  font: 16px Tahoma;
+  color: #777;
+  border: 1px solid white;
+  z-index: 0;
+  padding: 10px;
+  border-radius: 3%;
+  margin-left: 28%;
+  margin-bottom: 20px;
+}
+
+a:link {
+  /* background-color: red; */
+  text-decoration: none;
+}
+
+a:link:hoover {
+  text-decoration: underline;
+}
+#window {
+  width: 49%;
+  height: 50px;
+  background: w;
+  box-shadow: inset 0 0 5px #fff;
+  font: 16px Tahoma;
+  color: #777;
+  border: 1px solid white;
+  z-index: 0;
+  padding: 10px;
+  border-radius: 3%;
+  margin-left: 2%;
+  margin-bottom: 20px;
+}
+
+#newemail {
+  width: 350px;
+  height: 50px;
+  background: w;
+  box-shadow: inset 0 0 5px #fff;
+  font: 20px Tahoma;
+  color: #777;
+  border: 1px solid white;
+  z-index: 0;
+  padding: 10px;
+  border-radius: 3%;
+  margin-left: 2%;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+#window2 {
+  float: left;
+}
+
+#window3 {
+  float: right;
+}
+
+#acceptWindow {
+  width: 295px;
+  height: 270px;
+  float: left;
+  font-size: 14px;
+  text-align: left;
+  border: dotted;
+  border-width: 1px;
+  margin: 20px;
+  padding: 25px;
+}
+
+#glowny_widok2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+#uwaga {
+  font-size: 16px;
+  text-align: center;
+}
+
+#twoje {
+  font-size: 25px;
+  text-align: center;
+}
+
+#edit {
+  margin-left: 20px;
+  float: left;
+  font-size: 16px;
+  padding: 5px;
+}
+
+#editButton {
+  float: left;
+  margin-top: 60px;
+  width: 150px;
+  height: 40px;
+}

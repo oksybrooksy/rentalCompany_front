@@ -1,9 +1,21 @@
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import { Menu } from "semantic-ui-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
 
 export default function EmployeeMenu() {
+  const { user, isLogged } = useContext(UserContext);
+  const [us, setUser] = user;
+  const [log, setLog] = isLogged;
+
+  const logout = (event) => {
+    event.preventDefault();
+    setUser(null);
+    setLog(false);
+    console.log("submit");
+  };
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -11,6 +23,13 @@ export default function EmployeeMenu() {
           <Navbar.Brand>
             <Link to="/emp">Witaj w panelu pracownika</Link>
           </Navbar.Brand>
+          <Nav>
+            {log && (
+              <Nav.Link id="wyloguj" onClick={logout}>
+                Wyloguj
+              </Nav.Link>
+            )}
+          </Nav>
         </Container>
       </Navbar>
       <div id="adminmenu">
@@ -47,7 +66,13 @@ export default function EmployeeMenu() {
           <Menu.Item>
             <Menu.Menu>
               <Menu.Item id="wybor" name="edukacyjne">
-                <Link to="/rents">Zarządzaj</Link>
+                <Link to="/rentsToAccept">Oczekujące</Link>
+              </Menu.Item>
+              <Menu.Item id="wybor" name="edukacyjne">
+                <Link to="/rentsRented">Wypożyczone</Link>
+              </Menu.Item>
+              <Menu.Item id="wybor" name="edukacyjne">
+                <Link to="/archieveRents">Archiwum</Link>
               </Menu.Item>
             </Menu.Menu>
           </Menu.Item>

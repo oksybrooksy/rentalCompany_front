@@ -20,7 +20,7 @@ export default function AddGame() {
     var amount = document.getElementById("amount").value;
     var idproducent = document.getElementById("idproducer").value;
 
-    fetch("http://localhost:8080/addGame", {
+    fetch("http://localhost:8080/api/addGame", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

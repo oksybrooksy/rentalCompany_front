@@ -10,7 +10,9 @@ export default function DeleteEmpl({ name }) {
   const [user1, setUser] = useState([]);
   const [load, setLoad] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:8080/getFilteredUsers?name=${name}&role=2`)
+    fetch(
+      `http://localhost:8080/api/admin/getFilteredUsers?name=${name}&role=2`
+    )
       .then((res) => res.json())
       .then((result) => {
         setUser(result);
@@ -21,7 +23,7 @@ export default function DeleteEmpl({ name }) {
     setLoad(true);
     e.preventDefault();
 
-    fetch("http://localhost:8080/deleteUser", {
+    fetch("http://localhost:8080/api/deleteUser", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

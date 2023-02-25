@@ -1,16 +1,23 @@
-import React from "react";
+import React, { Component, useContext } from "react";
 import { Dropdown, Menu } from "semantic-ui-react";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+import { Nav, Container, Navbar } from "react-bootstrap";
+import { UserContext } from "../context/UserContext";
+import MyNavbar from "./Navbar";
 
 export default function CategoriesMenu({ setCategory }) {
-  // state = {};
-  // handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-  // const { activeItem } = this.state;
+  const { user, isLogged } = useContext(UserContext);
+  const [us, setUser] = user;
+  const [log, setLog] = isLogged;
 
-  //   const { user, isLogged } = useContext(UserContext);
-  //   const [userDet, setUserDet] = user;
-  //   const [log, setLog] = isLogged;
+  const logout = (event) => {
+    event.preventDefault();
+    setUser(null);
+    setLog(false);
+    console.log("submit");
+  };
 
   return (
     <div>
@@ -87,22 +94,32 @@ export default function CategoriesMenu({ setCategory }) {
             </Menu.Menu>
           </Menu.Item>
 
-          {/* {log && ( */}
-          <Dropdown item text="Więcej">
-            <Dropdown.Menu>
-              {/* {log && (
-                // <Link to="/userAccount">
-                <Dropdown.Item icon="settings" id="wybor" text="Twój profil" />
-                // </Link>
-              )} */}
-              {/* {log && (
-                // <Link to="/userRent">
-                <Dropdown.Item icon="globe" id="wybor" text="Twoje gry" />
-                // </Link>
-              )} */}
-            </Dropdown.Menu>
-          </Dropdown>
-          {/* )} */}
+          {log && (
+            <Dropdown item text="Więcej">
+              <Dropdown.Menu>
+                {log && (
+                  <Link to="/userAccount">
+                    <Dropdown.Item
+                      icon="settings"
+                      id="wybor"
+                      text="Twój profil"
+                    />
+                    //{" "}
+                  </Link>
+                )}
+                {log && (
+                  <Link to="/userRent">
+                    <Dropdown.Item icon="globe" id="wybor" text="Twoje gry" />
+                  </Link>
+                )}
+                {log && (
+                  <Link to="/userArchieveRent">
+                    <Dropdown.Item icon="globe" id="wybor" text="Archiwum" />
+                  </Link>
+                )}
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
         </Menu>
       </div>
     </div>

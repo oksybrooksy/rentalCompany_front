@@ -25,7 +25,7 @@
   margin-top: 2%;
   float: left;
   height: 1500px;
-  min-height: 100%;
+  min-height: 150%;
   position: relative;
   padding: 10px;
   padding-bottom: 60px;
@@ -34,6 +34,12 @@
 #wybor {
   font-size: 16px;
   height: 40px;
+  width: 210px;
+}
+
+#wybor2 {
+  font-size: 16px;
+  height: 80px;
   width: 210px;
 }
 
