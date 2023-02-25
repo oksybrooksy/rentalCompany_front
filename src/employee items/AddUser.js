@@ -32,9 +32,6 @@ export default function AddUser() {
 
       .then((userDetails) => {
         console.log(userDetails);
-        // setUserDet(userDetails);
-        // setLog(true);
-        // setLoad(true);
       });
   };
 
